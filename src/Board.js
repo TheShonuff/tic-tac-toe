@@ -10,42 +10,29 @@ function Board() {
     ["", "", ""],
   ]);
   const [currentPlayer, setCurrentPlayer] = useState(0);
-  function createBoard() {
-    let board = [];
-    let row = [];
-    for (let y = 0; y < 3; y++) {
-      for (let x = 0; x < 3; x++) {
-        let coord = `${y}-${x}`;
-        row.push(<Square position={coord} />);
-      }
-    }
-    return row;
+
+  function updateSquare(y, x) {
+    const boardCopy = [...board];
+    boardCopy[y][x] = "X";
+    setBoard(boardCopy);
   }
 
-  function renderSquare(key) {
-    return <Square key={key} />;
-  }
   return (
     <div>
       <h1>Board</h1>
-      {/* <div className="Board">{createBoard()}</div> */}
+      {/* Maping through doesn't work in it's current state */}
       <div className="Board">
-        <Square key={23} />
-        <div className="board-row">
-          {renderSquare(0)}
-          {renderSquare(1)}
-          {renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {renderSquare(3)}
-          {renderSquare(4)}
-          {renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {renderSquare(3)}
-          {renderSquare(4)}
-          {renderSquare(5)}
-        </div>
+        {board.map((row, x) =>
+          row.map((col, y) => (
+            <Square
+              key={x + y}
+              value={{ y, x }}
+              selected={board[x][y]}
+              updateSquare={updateSquare}
+              board={{ board }}
+            />
+          ))
+        )}
       </div>
     </div>
   );

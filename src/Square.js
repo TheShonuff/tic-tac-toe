@@ -2,19 +2,24 @@ import React from "react";
 import "./Square.css";
 import Board from "./Board";
 
-function handleClick(key, position) {
-  console.log(`Clicked ${key}`);
-}
+// function handleClick(key, position) {
+//   console.log(`Clicked ${key}`);
+// }
 
-function Square({ key }) {
+function Square({ value, updateSquare, selected }) {
   return (
-    <td
+    // Add logic here for each square. Selected is the what to compare against to render a X or O
+    <div
       className="Square"
-      key={key}
       onClick={() => {
-        console.log(key);
+        console.log(value.x, value.y);
+        updateSquare(value.x, value.y);
+        console.log(selected);
       }}
-    ></td>
+    >
+      {" "}
+      {selected === "X" ? "X" : ""}
+    </div>
   );
 }
 
