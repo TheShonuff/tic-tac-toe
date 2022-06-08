@@ -12,6 +12,7 @@ function Board() {
   // When the game loads your asked to chose X or O. X alawys goes first therefore X should be P1 and O be P2
   const [playerOne, setPlayerOne] = useState("X");
   const [playerTwo, setPlayerTwo] = useState("O");
+  const [winner, setWinner] = useState(null);
   const [currentPlayer, setCurrentPlayer] = useState(playerOne);
 
   //updates Square based on coordinates of click that relates to a position in the multidimensonal array
@@ -27,20 +28,40 @@ function Board() {
         : setCurrentPlayer(playerOne);
       boardCopy[y][x] = currentPlayer;
     }
+
+    console.log(`The winner is ${winner}`);
     setBoard(boardCopy);
+    gameWon();
   }
   function resetGame() {
+    setWinner(null);
+    setCurrentPlayer(playerOne);
     setBoard([
       ["", "", ""],
       ["", "", ""],
       ["", "", ""],
     ]);
   }
+  //function to determin if game is over
+  function gameWon() {
+    //check row
+    for (let index = 0; index < board.length; index++) {
+      const row = board[index];
+      console.log(`row in gamewon looks like ${row}`);
+      if (row.every((cell) => cell === playerOne)) {
+        setWinner(playerOne);
+      } else if (row.every((cell) => cell === playerTwo)) {
+        setWinner(playerTwo);
+      }
+    }
+    return console.log(winner);
+  }
 
   return (
     <div>
       <h1>Board</h1>
       <button onClick={resetGame}>Reset</button>
+      {winner !== null ? `The winner is ${winner}` : ""}
       <div className="Board">
         {/* map over the array and create squares */}
         {board.map((row, x) =>
