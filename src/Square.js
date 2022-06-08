@@ -18,7 +18,7 @@ function Square({ value, updateSquare, selected }) {
       }}
     >
       {" "}
-      {selected === "X" ? "X" : ""}
+      {selected}
     </div>
   );
 }
