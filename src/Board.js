@@ -50,6 +50,7 @@ function Board() {
       // console.log(`row in gamewon looks like ${row}`);
       if (row.every((cell) => cell === playerOne)) {
         setWinner(playerOne);
+        return;
       } else if (row.every((cell) => cell === playerTwo)) {
         setWinner(playerTwo);
         return;
@@ -61,6 +62,7 @@ function Board() {
       // console.log(`column in gamewon looks like ${column}`);
       if (column.every((cell) => cell === playerOne)) {
         setWinner(playerOne);
+        return;
       } else if (column.every((cell) => cell === playerTwo)) {
         setWinner(playerTwo);
         return;
@@ -73,13 +75,22 @@ function Board() {
     console.log(`Diagonal two is ${diagonalTwo}`);
     if (diagonalOne.every((cell) => cell === playerOne)) {
       setWinner(playerOne);
+      return;
     } else if (diagonalOne.every((cell) => cell === playerTwo)) {
       setWinner(playerTwo);
+      return;
     }
     if (diagonalTwo.every((cell) => cell === playerOne)) {
       setWinner(playerOne);
     } else if (diagonalTwo.every((cell) => cell === playerTwo)) {
       setWinner(playerTwo);
+      return;
+    }
+
+    //check no winner Produce Draw
+    if (board.flat().every((cell) => cell !== "")) {
+      setWinner("Draw");
+      return;
     }
   }
   return (

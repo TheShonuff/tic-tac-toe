@@ -1,8 +1,8 @@
 .Board {
   display: Flex;
   flex-wrap: wrap;
-  width: 700px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
