@@ -5,8 +5,14 @@
   margin: 0.5em 0.5rem 0.5rem 0.5rem;
   border-radius: 15px;
   box-shadow: inset 0px -8px 0px #10212a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.icon {
+  margin: 0 auto;
+}
 .Square-Clicked {
   background-color: black;
 }

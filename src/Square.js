@@ -3,7 +3,7 @@ import "./Square.css";
 import Board from "./Board";
 import Xicon from "./assets/icon-x.svg";
 import XiconOutline from "./assets/icon-o-outline.svg";
-import Oicon from "./assets/icon-x.svg";
+import Oicon from "./assets/icon-o.svg";
 import OiconOutline from "./assets/icon-o-outline.svg";
 // function handleClick(key, position) {
 //   console.log(`Clicked ${key}`);
@@ -20,8 +20,11 @@ function Square({ value, updateSquare, selected }) {
         console.log(selected);
       }}
     >
-      {" "}
-      {selected}
+      <div className="icon">
+        <img
+          src={selected === "X" ? Xicon : selected === "O" ? Oicon : ""}
+        ></img>
+      </div>
     </div>
   );
 }
