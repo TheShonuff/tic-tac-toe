@@ -52,16 +52,26 @@ function Board() {
         setWinner(playerOne);
       } else if (row.every((cell) => cell === playerTwo)) {
         setWinner(playerTwo);
+        return;
       }
     }
-    return console.log(winner);
+    //check column
+    for (let i = 0; i < 3; i++) {
+      const column = board.map((row) => row[i]);
+      console.log(`column in gamewon looks like ${column}`);
+      if (column.every((cell) => cell === playerOne)) {
+        setWinner(playerOne);
+      } else if (column.every((cell) => cell === playerTwo)) {
+        setWinner(playerTwo);
+        return;
+      }
+    }
   }
-
   return (
     <div>
       <h1>Board</h1>
       <button onClick={resetGame}>Reset</button>
-      {winner !== null ? `The winner is ${winner}` : ""}
+      {winner !== null ? `The winner is ${winner}` : null}
       <div className="Board">
         {/* map over the array and create squares */}
         {board.map((row, x) =>
