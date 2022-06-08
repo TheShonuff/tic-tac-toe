@@ -18,12 +18,15 @@ function Board() {
   function updateSquare(y, x) {
     // copy board stat into a new array
     const boardCopy = [...board];
-    // If click set to value. This will need to be updated to add a state that checks which player is active and to use the proper symbol to render
-    currentPlayer === playerOne
-      ? setCurrentPlayer(playerTwo)
-      : setCurrentPlayer(playerOne);
-    boardCopy[y][x] = currentPlayer;
-    // Update the State of the board
+
+    // if board selection is empyt. update board state and currentplayer
+    if (boardCopy[y][x] === "") {
+      // toggle player state on every click
+      currentPlayer === playerOne
+        ? setCurrentPlayer(playerTwo)
+        : setCurrentPlayer(playerOne);
+      boardCopy[y][x] = currentPlayer;
+    }
     setBoard(boardCopy);
   }
   function resetGame() {
