@@ -47,7 +47,7 @@ function Board() {
     //check row
     for (let index = 0; index < board.length; index++) {
       const row = board[index];
-      console.log(`row in gamewon looks like ${row}`);
+      // console.log(`row in gamewon looks like ${row}`);
       if (row.every((cell) => cell === playerOne)) {
         setWinner(playerOne);
       } else if (row.every((cell) => cell === playerTwo)) {
@@ -58,13 +58,28 @@ function Board() {
     //check column
     for (let i = 0; i < 3; i++) {
       const column = board.map((row) => row[i]);
-      console.log(`column in gamewon looks like ${column}`);
+      // console.log(`column in gamewon looks like ${column}`);
       if (column.every((cell) => cell === playerOne)) {
         setWinner(playerOne);
       } else if (column.every((cell) => cell === playerTwo)) {
         setWinner(playerTwo);
         return;
       }
+    }
+    //check diagonal
+    const diagonalOne = [board[0][0], board[1][1], board[2][2]];
+    const diagonalTwo = [board[2][0], board[1][1], board[0][2]];
+    console.log(`Diagonal One is ${diagonalOne}`);
+    console.log(`Diagonal two is ${diagonalTwo}`);
+    if (diagonalOne.every((cell) => cell === playerOne)) {
+      setWinner(playerOne);
+    } else if (diagonalOne.every((cell) => cell === playerTwo)) {
+      setWinner(playerTwo);
+    }
+    if (diagonalTwo.every((cell) => cell === playerOne)) {
+      setWinner(playerOne);
+    } else if (diagonalTwo.every((cell) => cell === playerTwo)) {
+      setWinner(playerTwo);
     }
   }
   return (
