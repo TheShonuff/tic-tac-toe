@@ -19,7 +19,10 @@ function Board() {
     // copy board stat into a new array
     const boardCopy = [...board];
     // If click set to value. This will need to be updated to add a state that checks which player is active and to use the proper symbol to render
-    boardCopy[y][x] = playerOne;
+    currentPlayer === playerOne
+      ? setCurrentPlayer(playerTwo)
+      : setCurrentPlayer(playerOne);
+    boardCopy[y][x] = currentPlayer;
     // Update the State of the board
     setBoard(boardCopy);
   }
