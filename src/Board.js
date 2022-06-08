@@ -4,6 +4,7 @@ import Xicon from "./assets/icon-x.svg";
 import XiconOutline from "./assets/icon-o-outline.svg";
 import Oicon from "./assets/icon-o.svg";
 import OiconOutline from "./assets/icon-o-outline.svg";
+import IconRestart from "./assets/icon-restart.svg";
 
 import "./Board.css";
 
@@ -18,13 +19,16 @@ function Board() {
     name: "Player One",
     symbol: "X",
     icon: Xicon,
+    wins: 0,
   });
   const [playerTwo, setPlayerTwo] = useState({
     name: "Player Two",
     symbol: "O",
     icon: Oicon,
+    wins: 0,
   });
   const [winner, setWinner] = useState(null);
+  const [draws, setDraws] = useState(0);
   const [currentPlayer, setCurrentPlayer] = useState(playerOne);
 
   //updates Square based on coordinates of click that relates to a position in the multidimensonal array
@@ -92,7 +96,7 @@ function Board() {
       setWinner(playerTwo);
       return;
     }
-    if (diagonalTwo.every((cell) => cell === playerOne)) {
+    if (diagonalTwo.every((cell) => cell === playerOne.symbol)) {
       setWinner(playerOne);
     } else if (diagonalTwo.every((cell) => cell === playerTwo.symbol)) {
       setWinner(playerTwo);
@@ -108,29 +112,51 @@ function Board() {
   return (
     <div>
       <h1>Board</h1>
-
+      {winner !== null ? `The winner is ${winner.name}` : null}
       <div className="Board">
         <div className="Board-Info">
           <div className="Icon-pack">
             <img src={Xicon} alt="X-icon"></img>
             <img src={Oicon} alt="O-icon"></img>
           </div>
-          <div className="Current-Player">{currentPlayer.name}</div>
-          <button onClick={resetGame}>Reset</button>
-          {winner !== null ? `The winner is ${winner.name}` : null}
+          <div className="Current-Player">
+            <img src={currentPlayer.symbol === "X" ? Xicon : Oicon}></img>
+            <p>TURN</p>
+          </div>
+          <button className="Reset" onClick={resetGame}>
+            <img src={IconRestart}></img>
+          </button>
         </div>
-        {/* map over the array and create squares */}
-        {board.map((row, x) =>
-          row.map((col, y) => (
-            <Square
-              key={x + y}
-              value={{ y, x }}
-              selected={board[x][y]}
-              updateSquare={updateSquare}
-              board={{ board }}
-            />
-          ))
-        )}
+        <div className="Squares">
+          {/* map over the array and create squares */}
+          {board.map((row, x) =>
+            row.map((col, y) => (
+              <Square
+                key={x + y}
+                value={{ y, x }}
+                selected={board[x][y]}
+                updateSquare={updateSquare}
+                board={{ board }}
+              />
+            ))
+          )}
+        </div>
+        <div className="Scores">
+          <div className="Player-One-Score">
+            <p>{playerOne.symbol}(YOU)</p>
+            <h4>{playerOne.wins}</h4>
+          </div>
+          <div className="Ties">
+            <p>TIES</p>
+            <h4>{draws}</h4>
+          </div>
+          <div className="Player-Two-Score">
+            <p>
+              {playerTwo.symbol}({playerTwo.name})
+            </p>
+            <h4>{playerTwo.wins}</h4>
+          </div>
+        </div>
       </div>
     </div>
   );
