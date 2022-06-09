@@ -9,7 +9,7 @@ import Modal from "./Modal";
 
 import "./Board.css";
 
-function Board() {
+function Board({ quitGame }) {
   const [board, setBoard] = useState([
     ["", "", ""],
     ["", "", ""],
@@ -29,6 +29,7 @@ function Board() {
     wins: 0,
   });
   const [p1Wins, setP1Wins] = useState(0);
+  const [p2Wins, setP2Wins] = useState(0);
   const [winner, setWinner] = useState(null);
   const [draws, setDraws] = useState(0);
   const [currentPlayer, setCurrentPlayer] = useState(playerOne);
@@ -110,19 +111,40 @@ function Board() {
     //check no winner Produce Draw
     if (board.flat().every((cell) => cell !== "")) {
       setWinner("Draw");
-      setDraws(draws + 1);
       return;
     }
   }
 
+  //modal button should quit to main menu
   function quit() {
     setWinner(null);
     console.log("Clicked");
+    quitGame();
+  }
+
+  //modal button to start next round
+  function nextRound(winner) {
+    if (winner === "X") {
+      setP1Wins(p1Wins + 1);
+    } else if (winner === "O") {
+      setP2Wins(p2Wins + 1);
+    } else if (winner === undefined) {
+      setDraws(draws + 1);
+    }
+
+    setWinner(null);
+    setBoard([
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+    ]);
+    setCurrentPlayer(playerOne);
   }
   return (
     <div>
-      {winner !== null ? <Modal winner={winner} quit={quit} /> : null}
-      <h1>Board</h1>
+      {winner !== null ? (
+        <Modal winner={winner} nextRound={nextRound} quit={quit} />
+      ) : null}
       {winner !== null ? `The winner is ${winner.name}` : null}
       <div className="Board">
         <div className="Board-Info">
@@ -167,7 +189,7 @@ function Board() {
             <p>
               {playerTwo.symbol} ({playerTwo.name.toUpperCase()})
             </p>
-            <h4>{playerTwo.wins}</h4>
+            <h4>{p2Wins}</h4>
           </div>
         </div>
       </div>
