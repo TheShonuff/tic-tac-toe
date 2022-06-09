@@ -5,6 +5,7 @@ import XiconOutline from "./assets/icon-o-outline.svg";
 import Oicon from "./assets/icon-o.svg";
 import OiconOutline from "./assets/icon-o-outline.svg";
 import IconRestart from "./assets/icon-restart.svg";
+import Modal from "./Modal";
 
 import "./Board.css";
 
@@ -27,6 +28,7 @@ function Board() {
     icon: Oicon,
     wins: 0,
   });
+  const [p1Wins, setP1Wins] = useState(0);
   const [winner, setWinner] = useState(null);
   const [draws, setDraws] = useState(0);
   const [currentPlayer, setCurrentPlayer] = useState(playerOne);
@@ -66,9 +68,11 @@ function Board() {
       // console.log(`row in gamewon looks like ${row}`);
       if (row.every((cell) => cell === playerOne.symbol)) {
         setWinner(playerOne);
+
         return;
       } else if (row.every((cell) => cell === playerTwo.symbol)) {
         setWinner(playerTwo);
+
         return;
       }
     }
@@ -106,11 +110,18 @@ function Board() {
     //check no winner Produce Draw
     if (board.flat().every((cell) => cell !== "")) {
       setWinner("Draw");
+      setDraws(draws + 1);
       return;
     }
   }
+
+  function quit() {
+    setWinner(null);
+    console.log("Clicked");
+  }
   return (
     <div>
+      {winner !== null ? <Modal winner={winner} quit={quit} /> : null}
       <h1>Board</h1>
       {winner !== null ? `The winner is ${winner.name}` : null}
       <div className="Board">
@@ -143,8 +154,10 @@ function Board() {
         </div>
         <div className="Scores">
           <div className="Player-One-Score">
-            <p>{playerOne.symbol}(YOU)</p>
-            <h4>{playerOne.wins}</h4>
+            <p>
+              {playerOne.symbol} ({playerOne.name.toUpperCase()})
+            </p>
+            <h4>{p1Wins}</h4>
           </div>
           <div className="Ties">
             <p>TIES</p>
@@ -152,7 +165,7 @@ function Board() {
           </div>
           <div className="Player-Two-Score">
             <p>
-              {playerTwo.symbol}({playerTwo.name})
+              {playerTwo.symbol} ({playerTwo.name.toUpperCase()})
             </p>
             <h4>{playerTwo.wins}</h4>
           </div>
