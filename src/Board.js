@@ -33,6 +33,7 @@ function Board({ quitGame }) {
   const [winner, setWinner] = useState(null);
   const [draws, setDraws] = useState(0);
   const [currentPlayer, setCurrentPlayer] = useState(playerOne);
+  const [squareHover, setSquareHover] = useState(false);
 
   //updates Square based on coordinates of click that relates to a position in the multidimensonal array
   function updateSquare(y, x) {
@@ -92,8 +93,8 @@ function Board({ quitGame }) {
     //check diagonal
     const diagonalOne = [board[0][0], board[1][1], board[2][2]];
     const diagonalTwo = [board[2][0], board[1][1], board[0][2]];
-    console.log(`Diagonal One is ${diagonalOne}`);
-    console.log(`Diagonal two is ${diagonalTwo}`);
+    // console.log(`Diagonal One is ${diagonalOne}`);
+    // console.log(`Diagonal two is ${diagonalTwo}`);
     if (diagonalOne.every((cell) => cell === playerOne.symbol)) {
       setWinner(playerOne);
       return;
@@ -118,7 +119,7 @@ function Board({ quitGame }) {
   //modal button should quit to main menu
   function quit() {
     setWinner(null);
-    console.log("Clicked");
+    // console.log("Clicked");
     quitGame();
   }
 
@@ -140,12 +141,14 @@ function Board({ quitGame }) {
     ]);
     setCurrentPlayer(playerOne);
   }
+  //add outline in square of current player if square is empty
+
   return (
     <div>
       {winner !== null ? (
         <Modal winner={winner} nextRound={nextRound} quit={quit} />
       ) : null}
-      {winner !== null ? `The winner is ${winner.name}` : null}
+
       <div className="Board">
         <div className="Board-Info">
           <div className="Icon-pack">
@@ -169,6 +172,7 @@ function Board({ quitGame }) {
                 value={{ y, x }}
                 selected={board[x][y]}
                 updateSquare={updateSquare}
+                currentPlayer={currentPlayer}
                 board={{ board }}
               />
             ))
