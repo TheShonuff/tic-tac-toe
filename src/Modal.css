@@ -1,7 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 .ModalContainer {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.8);
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+}
+
+.Board-Container {
+  background: rgba(0, 0, 0, 0.8);
+  height: 100vh;
+  width: 100vw;
 }
 
 .Modal {
