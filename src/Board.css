@@ -1,20 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-.Board-Container {
-  background: rgba(0, 0, 0, 0.8);
-  height: 100vh;
-  width: 100vw;
-}
-
-.Modal-Container {
-  background-color: rgba(0, 0, 0, 0.8);
-  opacity: 0;
-}
-
-.Modal-Container :target {
-  opacity: 1;
-}
-
 .Board {
   display: Flex;
   flex-wrap: wrap;
@@ -125,4 +110,7 @@ h4 {
   font-weight: bold;
   font-family: "Outfit", sans-serif;
   margin: 0;
+}
+
+@media screen and (max-width: 500px) {
 }

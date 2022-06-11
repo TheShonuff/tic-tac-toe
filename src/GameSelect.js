@@ -6,7 +6,7 @@ import logo from "./assets/logo.svg";
 
 function GameSelect({ newGame }) {
   return (
-    <div>
+    <div className="GameSelect-Wrapper">
       <div className="GameSelection">
         <div className="Icons">
           <img src={logo} alt="XO Icon"></img>
