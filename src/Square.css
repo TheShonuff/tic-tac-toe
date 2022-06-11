@@ -9,16 +9,6 @@
   justify-content: center;
   align-items: center;
 }
-/* h1 class for p1 win */
-.p1Win {
-  color: #31c3bd;
-}
-
-/* h1 class for p2 win */
-
-.p2Win {
-  color: #f2b137;
-}
 
 .Square:hover {
   cursor: pointer;
@@ -29,4 +19,16 @@
 }
 .Square-Clicked {
   background-color: black;
+}
+
+@media screen and (max-width: 500px) {
+  .Square {
+    height: 96px;
+    width: 96px;
+  }
+
+  .icon img {
+    height: 40px;
+    width: 40px;
+  }
 }

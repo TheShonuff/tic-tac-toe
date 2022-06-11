@@ -113,4 +113,50 @@ h4 {
 }
 
 @media screen and (max-width: 500px) {
+  .Board {
+    height: 515px;
+    width: 348px;
+  }
+
+  .Squares {
+    height: 328px;
+    width: 400px;
+  }
+
+  .Board-Info {
+    width: 300px;
+  }
+  .Reset {
+    height: 40px;
+    width: 40px;
+  }
+
+  .Current-Player {
+    height: 40px;
+    width: 96px;
+  }
+
+  .Current-Player img {
+    height: 16px;
+    width: 16px;
+  }
+
+  .Current-Player p {
+    font-size: 14px;
+  }
+
+  .Player-One-Score,
+  .Player-Two-Score,
+  .Ties {
+    height: 64px;
+    width: 96px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
 }
