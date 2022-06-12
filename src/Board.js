@@ -7,7 +7,17 @@ import OiconOutline from "./assets/icon-o-outline.svg";
 import IconRestart from "./assets/icon-restart.svg";
 import Modal from "./Modal";
 
+import { isMobile } from "react-device-detect";
+
 import "./Board.css";
+
+function mobile() {
+  if (isMobile) {
+    console.log("I'm a mobile device");
+  } else {
+    console.log("I'm NOT a mobile device");
+  }
+}
 
 function Board({ quitGame }) {
   const [board, setBoard] = useState([
@@ -181,7 +191,8 @@ function Board({ quitGame }) {
         <div className="Scores">
           <div className="Player-One-Score">
             <p>
-              {playerOne.symbol} ({playerOne.name.toUpperCase()})
+              {/* {playerOne.symbol} ({playerOne.name.toUpperCase()}) */}
+              {isMobile ? "X(P1)" : `${playerOne.symbol} ${playerOne.name}`}
             </p>
             <h4>{p1Wins}</h4>
           </div>
@@ -191,7 +202,8 @@ function Board({ quitGame }) {
           </div>
           <div className="Player-Two-Score">
             <p>
-              {playerTwo.symbol} ({playerTwo.name.toUpperCase()})
+              {/* {playerTwo.symbol} ({playerTwo.name.toUpperCase()}) */}
+              {isMobile ? "X(P2)" : `${playerTwo.symbol} ${playerTwo.name}`}
             </p>
             <h4>{p2Wins}</h4>
           </div>
