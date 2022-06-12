@@ -39,14 +39,24 @@ function Square({ value, updateSquare, selected, currentPlayer }) {
         console.log(selected);
       }}
       // onMouseOver={mouseHover}
-      onMouseEnter={mouseEnter}
-      onMouseLeave={mouseLeave}
+      onPointerEnter={mouseEnter}
+      onPointerLeave={mouseLeave}
     >
       <div className="icon">
-        <img src={selected === "" ? icon : ""}></img>
+        {/* <img src={icon !== "" ? icon : ""}></img>
         <img
           src={selected === "X" ? Xicon : selected === "O" ? Oicon : ""}
-        ></img>
+        ></img> */}
+
+        {icon !== "" ? (
+          <img src={icon}></img>
+        ) : selected === "X" ? (
+          <img src={Xicon}></img>
+        ) : selected === "O" ? (
+          <img src={Oicon}></img>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
