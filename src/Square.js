@@ -48,7 +48,7 @@ function Square({ value, updateSquare, selected, currentPlayer }) {
           src={selected === "X" ? Xicon : selected === "O" ? Oicon : ""}
         ></img> */}
 
-        {icon !== "" ? (
+        {icon !== "" && selected === "" ? (
           <img src={icon}></img>
         ) : selected === "X" ? (
           <img src={Xicon}></img>
