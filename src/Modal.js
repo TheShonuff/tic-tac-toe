@@ -9,7 +9,7 @@ function Modal({ winner, quit, nextRound }) {
     `The modal winner is ${winner.symbol} while draw shows ${winner}`
   );
   return (
-    <div class="ModalContainer">
+    <div className="ModalContainer">
       <div className="Modal">
         <h1 className="Announce">
           {winner.symbol === "X"
