@@ -184,6 +184,7 @@ function Board({ quitGame }) {
                 updateSquare={updateSquare}
                 currentPlayer={currentPlayer}
                 board={{ board }}
+                isMobile={isMobile}
               />
             ))
           )}

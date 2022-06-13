@@ -9,7 +9,7 @@ import OiconOutline from "./assets/icon-o-outline.svg";
 //   console.log(`Clicked ${key}`);
 // }
 
-function Square({ value, updateSquare, selected, currentPlayer }) {
+function Square({ value, updateSquare, selected, currentPlayer, isMobile }) {
   const [icon, setIcon] = useState("");
   function mouseHover(event) {
     if (selected === "") {
@@ -37,6 +37,7 @@ function Square({ value, updateSquare, selected, currentPlayer }) {
         console.log(value.x, value.y);
         updateSquare(value.x, value.y);
         console.log(selected);
+        console.log(`is this mobile ${isMobile}`);
       }}
       // onMouseOver={mouseHover}
       onPointerEnter={mouseEnter}
@@ -47,8 +48,22 @@ function Square({ value, updateSquare, selected, currentPlayer }) {
         <img
           src={selected === "X" ? Xicon : selected === "O" ? Oicon : ""}
         ></img> */}
+        {/* {icon !== "" && selected === "" ? (
+          <img src={icon}></img>
+        ) : selected === "X" ? (
+          <img src={Xicon}></img>
+        ) : selected === "O" ? (
+          <img src={Oicon}></img>
+        ) : (
+          ""
+        )} */}
+        {isMobile === true && (
+          <img
+            src={selected === "X" ? Xicon : selected === "" ? Oicon : ""}
+          ></img>
+        )}
 
-        {icon !== "" && selected === "" ? (
+        {isMobile === false && icon !== "" && selected === "" ? (
           <img src={icon}></img>
         ) : selected === "X" ? (
           <img src={Xicon}></img>
