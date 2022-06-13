@@ -19,7 +19,7 @@ function Modal({ winner, quit, nextRound }) {
             : ""}
         </h1>
         <div className="WinnerTitle">
-          <img
+          {/* <img
             src={
               winner.symbol === "X"
                 ? Xicon
@@ -29,7 +29,12 @@ function Modal({ winner, quit, nextRound }) {
                 ? null
                 : null
             }
-          ></img>
+          ></img> */}
+          {winner.symbol === "X" ? (
+            <img src={Xicon}></img>
+          ) : winner.symbol === "O" ? (
+            <img src={Oicon}></img>
+          ) : winner === "Draw" ? null : null}
           <h1 className={winner.symbol === "X" ? "p1Win" : "p2Win"}>
             {winner.symbol !== undefined ? "TAKES THE ROUND" : "ROUND TIED"}
           </h1>
