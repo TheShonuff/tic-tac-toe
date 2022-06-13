@@ -29,6 +29,14 @@ function Square({ value, updateSquare, selected, currentPlayer, isMobile }) {
   function mouseLeave() {
     setIcon("");
   }
+
+  function mobileUser() {
+    if (isMobile) {
+      if (selected === "X") {
+        return <img src={Xicon}></img>;
+      }
+    }
+  }
   return (
     // Add logic here for each square. Selected is the what to compare against to render a X or O
     <div
@@ -44,34 +52,17 @@ function Square({ value, updateSquare, selected, currentPlayer, isMobile }) {
       onPointerLeave={mouseLeave}
     >
       <div className="icon">
-        {/* <img src={icon !== "" ? icon : ""}></img>
-        <img
-          src={selected === "X" ? Xicon : selected === "O" ? Oicon : ""}
-        ></img> */}
-        {/* {icon !== "" && selected === "" ? (
-          <img src={icon}></img>
-        ) : selected === "X" ? (
+        {isMobile && selected === "X" ? (
           <img src={Xicon}></img>
-        ) : selected === "O" ? (
+        ) : isMobile && selected === "O" ? (
           <img src={Oicon}></img>
-        ) : (
-          ""
-        )} */}
-        {isMobile === true && (
-          <img
-            src={selected === "X" ? Xicon : selected === "" ? Oicon : ""}
-          ></img>
-        )}
-
-        {isMobile === false && icon !== "" && selected === "" ? (
+        ) : !isMobile && icon !== "" && selected === "" ? (
           <img src={icon}></img>
-        ) : selected === "X" ? (
+        ) : !isMobile && selected === "X" ? (
           <img src={Xicon}></img>
-        ) : selected === "O" ? (
+        ) : !isMobile && selected === "O" ? (
           <img src={Oicon}></img>
-        ) : (
-          ""
-        )}
+        ) : null}
       </div>
     </div>
   );
