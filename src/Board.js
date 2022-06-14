@@ -11,15 +11,7 @@ import { isMobile } from "react-device-detect";
 
 import "./Board.css";
 
-function mobile() {
-  if (isMobile) {
-    console.log("I'm a mobile device");
-  } else {
-    console.log("I'm NOT a mobile device");
-  }
-}
-
-function Board({ quitGame }) {
+function Board({ quitGame, playerOneSymbol }) {
   const [board, setBoard] = useState([
     ["", "", ""],
     ["", "", ""],
@@ -28,13 +20,13 @@ function Board({ quitGame }) {
   // When the game loads your asked to chose X or O. X alawys goes first therefore X should be P1 and O be P2
   const [playerOne, setPlayerOne] = useState({
     name: "Player One",
-    symbol: "X",
+    symbol: playerOneSymbol,
     icon: Xicon,
     wins: 0,
   });
   const [playerTwo, setPlayerTwo] = useState({
     name: "Player Two",
-    symbol: "O",
+    symbol: playerOneSymbol === "X" ? "O" : "X",
     icon: Oicon,
     wins: 0,
   });
@@ -42,7 +34,9 @@ function Board({ quitGame }) {
   const [p2Wins, setP2Wins] = useState(0);
   const [winner, setWinner] = useState(null);
   const [draws, setDraws] = useState(0);
-  const [currentPlayer, setCurrentPlayer] = useState(playerOne);
+  const [currentPlayer, setCurrentPlayer] = useState(
+    playerOne.symbol === "X" ? playerOne : playerTwo
+  );
   const [squareHover, setSquareHover] = useState(false);
 
   //updates Square based on coordinates of click that relates to a position in the multidimensonal array
@@ -56,6 +50,7 @@ function Board({ quitGame }) {
       currentPlayer === playerOne
         ? setCurrentPlayer(playerTwo)
         : setCurrentPlayer(playerOne);
+
       boardCopy[y][x] = currentPlayer.symbol;
     }
 
@@ -65,7 +60,7 @@ function Board({ quitGame }) {
   }
   function resetGame() {
     setWinner(null);
-    setCurrentPlayer(playerOne);
+    setCurrentPlayer(playerOne.symbol === "X" ? playerOne : playerTwo);
     setBoard([
       ["", "", ""],
       ["", "", ""],
@@ -135,9 +130,9 @@ function Board({ quitGame }) {
 
   //modal button to start next round
   function nextRound(winner) {
-    if (winner === "X") {
+    if (winner === playerOne.symbol) {
       setP1Wins(p1Wins + 1);
-    } else if (winner === "O") {
+    } else if (winner === playerTwo.symbol) {
       setP2Wins(p2Wins + 1);
     } else if (winner === undefined) {
       setDraws(draws + 1);
@@ -149,14 +144,19 @@ function Board({ quitGame }) {
       ["", "", ""],
       ["", "", ""],
     ]);
-    setCurrentPlayer(playerOne);
+    setCurrentPlayer(playerOne.symbol === "X" ? playerOne : playerTwo);
   }
   //add outline in square of current player if square is empty
 
   return (
     <div>
       {winner !== null ? (
-        <Modal winner={winner} nextRound={nextRound} quit={quit} />
+        <Modal
+          winner={winner}
+          nextRound={nextRound}
+          quit={quit}
+          playerOneSymbol={playerOneSymbol}
+        />
       ) : null}
 
       <div className="Board">

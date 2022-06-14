@@ -4,7 +4,7 @@ import Xicon from "./assets/icon-x.svg";
 import Oicon from "./assets/icon-o.svg";
 import logo from "./assets/logo.svg";
 
-function GameSelect({ newGame }) {
+function GameSelect({ newGame, playerOneSymbol }) {
   return (
     <div className="GameSelect-Wrapper">
       <div className="GameSelection">
@@ -14,10 +14,20 @@ function GameSelect({ newGame }) {
         <div className="playerOne-Select">
           <h1>PICK PLAYER 1'S MARK</h1>
           <div className="Picker">
-            <div className="xPick">
+            <div
+              className="xPick"
+              onClick={() => {
+                playerOneSymbol("X");
+              }}
+            >
               <img src={Xicon}></img>
             </div>
-            <div className="oPick">
+            <div
+              className="oPick"
+              onClick={() => {
+                playerOneSymbol("O");
+              }}
+            >
               <img src={Oicon}></img>
             </div>
           </div>
