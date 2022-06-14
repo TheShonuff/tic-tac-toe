@@ -4,7 +4,7 @@ import Xicon from "./assets/icon-x.svg";
 
 import Oicon from "./assets/icon-o.svg";
 
-function Modal({ winner, quit, nextRound }) {
+function Modal({ winner, quit, nextRound, playerOneSymbol }) {
   console.log(
     `The modal winner is ${winner.symbol} while draw shows ${winner}`
   );
@@ -13,10 +13,12 @@ function Modal({ winner, quit, nextRound }) {
       <div className="Modal">
         <h1 className="Announce">
           {winner.symbol === "X"
-            ? "PLAYER 1 WINS"
+            ? `${winner.name}`
             : winner.symbol === "O"
-            ? "PLAYER 2 WINS"
-            : ""}
+            ? `${winner.name}`
+            : winner === "Draw"
+            ? ""
+            : null}
         </h1>
         <div className="WinnerTitle">
           {winner.symbol === "X" ? (

@@ -193,9 +193,13 @@ function Board({ quitGame, playerOneSymbol }) {
           <div className="Player-One-Score">
             <p>
               {/* {playerOne.symbol} ({playerOne.name.toUpperCase()}) */}
-              {isMobile ? "X(P1)" : `${playerOne.symbol} ${playerOne.name}`}
+              {isMobile
+                ? `X ${playerOne.symbol === "X" ? "P1" : "P2"}`
+                : `X ${
+                    playerOne.sybmol === "X" ? playerOne.name : playerTwo.name
+                  }`}
             </p>
-            <h4>{p1Wins}</h4>
+            <h4>{playerOne.symbol === "X" ? p1Wins : p2Wins}</h4>
           </div>
           <div className="Ties">
             <p>TIES</p>
@@ -204,9 +208,13 @@ function Board({ quitGame, playerOneSymbol }) {
           <div className="Player-Two-Score">
             <p>
               {/* {playerTwo.symbol} ({playerTwo.name.toUpperCase()}) */}
-              {isMobile ? "X(P2)" : `${playerTwo.symbol} ${playerTwo.name}`}
+              {isMobile
+                ? `O ${playerTwo.symbol === "O" ? "P2" : "P1"}`
+                : ` O ${
+                    playerTwo.symbol === "O" ? playerTwo.name : playerOne.name
+                  }`}
             </p>
-            <h4>{p2Wins}</h4>
+            <h4>{playerTwo.symbol === "O" ? p2Wins : p1Wins}</h4>
           </div>
         </div>
       </div>
