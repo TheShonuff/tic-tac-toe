@@ -196,7 +196,7 @@ function Board({ quitGame, playerOneSymbol }) {
               {isMobile
                 ? `X ${playerOne.symbol === "X" ? "P1" : "P2"}`
                 : `X ${
-                    playerOne.sybmol === "X" ? playerOne.name : playerTwo.name
+                    playerOne.symbol === "X" ? playerOne.name : playerTwo.name
                   }`}
             </p>
             <h4>{playerOne.symbol === "X" ? p1Wins : p2Wins}</h4>

@@ -4,7 +4,7 @@ import Xicon from "./assets/icon-x.svg";
 
 import Oicon from "./assets/icon-o.svg";
 
-function Modal({ winner, quit, nextRound, playerOneSymbol }) {
+function Modal({ winner, quit, nextRound }) {
   console.log(
     `The modal winner is ${winner.symbol} while draw shows ${winner}`
   );
