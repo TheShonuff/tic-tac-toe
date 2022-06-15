@@ -4,7 +4,7 @@ import Xicon from "./assets/icon-x.svg";
 import Oicon from "./assets/icon-o.svg";
 import logo from "./assets/logo.svg";
 
-function GameSelect({ newGame, playerOneSymbol }) {
+function GameSelect({ newGame, playerOneSymbol, newCPUGame }) {
   return (
     <div className="GameSelect-Wrapper">
       <div className="GameSelection">
@@ -33,7 +33,9 @@ function GameSelect({ newGame, playerOneSymbol }) {
           </div>
           <h2>REMEMBER : X GOES FIRST</h2>
         </div>
-        <button className="vCPU">New Game (Vs CPU)</button>
+        <button className="vCPU" onClick={newCPUGame}>
+          New Game (Vs CPU)
+        </button>
         <button className="vPlayer" onClick={newGame}>
           New Game (Vs Player)
         </button>
