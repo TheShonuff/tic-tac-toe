@@ -11,7 +11,7 @@ import { isMobile } from "react-device-detect";
 
 import "./Board.css";
 
-function Board({ quitGame, playerOneSymbol }) {
+function Board({ quitGame, playerOneSymbol, newCPUgame }) {
   const [board, setBoard] = useState([
     ["", "", ""],
     ["", "", ""],
@@ -25,7 +25,7 @@ function Board({ quitGame, playerOneSymbol }) {
     wins: 0,
   });
   const [playerTwo, setPlayerTwo] = useState({
-    name: "Player Two",
+    name: newCPUgame === true ? "CPU" : "Player Two",
     symbol: playerOneSymbol === "X" ? "O" : "X",
     icon: Oicon,
     wins: 0,
@@ -39,12 +39,8 @@ function Board({ quitGame, playerOneSymbol }) {
   );
   const [squareHover, setSquareHover] = useState(false);
 
-  //updates Square based on coordinates of click that relates to a position in the multidimensonal array
   function updateSquare(y, x) {
-    // copy board stat into a new array
     const boardCopy = [...board];
-
-    // if board selection is empyt. update board state and currentplayer
     if (boardCopy[y][x] === "") {
       // toggle player state on every click
       currentPlayer === playerOne
@@ -53,8 +49,6 @@ function Board({ quitGame, playerOneSymbol }) {
 
       boardCopy[y][x] = currentPlayer.symbol;
     }
-
-    console.log(`The winner is ${winner}`);
     setBoard(boardCopy);
     gameWon();
   }
@@ -75,11 +69,9 @@ function Board({ quitGame, playerOneSymbol }) {
       // console.log(`row in gamewon looks like ${row}`);
       if (row.every((cell) => cell === playerOne.symbol)) {
         setWinner(playerOne);
-
         return;
       } else if (row.every((cell) => cell === playerTwo.symbol)) {
         setWinner(playerTwo);
-
         return;
       }
     }
@@ -113,7 +105,6 @@ function Board({ quitGame, playerOneSymbol }) {
       setWinner(playerTwo);
       return;
     }
-
     //check no winner Produce Draw
     if (board.flat().every((cell) => cell !== "")) {
       setWinner("Draw");
@@ -126,6 +117,30 @@ function Board({ quitGame, playerOneSymbol }) {
     setWinner(null);
     // console.log("Clicked");
     quitGame();
+  }
+
+  //setup CPU player function
+
+  function getCPUTurn() {
+    const emptyIndexs = [];
+    board.forEach((row, arrayIndex) => {
+      row.forEach((cell, index) => {
+        if (cell === "") {
+          emptyIndexs.push({ arrayIndex, index });
+        }
+      });
+    });
+    const randomIndex = Math.floor(Math.random() * emptyIndexs.length);
+    return emptyIndexs[randomIndex];
+  }
+
+  function cpuPlay(x, y) {
+    if (winner) return;
+
+    const CPUMove = getCPUTurn();
+    const boardCopy = [...board];
+    boardCopy[y][x] = currentPlayer.symbol;
+    gameWon();
   }
 
   //modal button to start next round
