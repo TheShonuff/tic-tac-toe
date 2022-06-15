@@ -15,6 +15,7 @@ function Game() {
   }
   function newCPUGame() {
     setnewCPUgame(true);
+    setNewGame(true);
     console.log("CPU game selected");
   }
 
@@ -24,7 +25,7 @@ function Game() {
   const [winner, isWinnner] = useState(null);
   return (
     <div>
-      {newGame === false || newCPUgame === false ? (
+      {newGame === false ? (
         <GameSelect
           newGame={startGame}
           newCPUGame={newCPUGame}

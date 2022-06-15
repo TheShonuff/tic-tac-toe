@@ -49,6 +49,9 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
 
       boardCopy[y][x] = currentPlayer.symbol;
     }
+    // if (currentPlayer.name === "CPU") {
+    //   cpuPlay();
+    // }
     setBoard(boardCopy);
     gameWon();
   }
@@ -135,11 +138,13 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
   }
 
   function cpuPlay(x, y) {
-    if (winner) return;
-
     const CPUMove = getCPUTurn();
+    console.log(`cpu move holds ${CPUMove.index}`);
     const boardCopy = [...board];
-    boardCopy[y][x] = currentPlayer.symbol;
+    boardCopy[CPUMove.index][CPUMove.index] = currentPlayer.symbol;
+    setBoard(boardCopy);
+
+    console.log(currentPlayer);
     gameWon();
   }
 
@@ -200,6 +205,7 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
                 currentPlayer={currentPlayer}
                 board={{ board }}
                 isMobile={isMobile}
+                cpuPlay={cpuPlay}
               />
             ))
           )}

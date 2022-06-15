@@ -9,7 +9,14 @@ import OiconOutline from "./assets/icon-o-outline.svg";
 //   console.log(`Clicked ${key}`);
 // }
 
-function Square({ value, updateSquare, selected, currentPlayer, isMobile }) {
+function Square({
+  value,
+  updateSquare,
+  selected,
+  currentPlayer,
+  isMobile,
+  cpuPlay,
+}) {
   const [icon, setIcon] = useState("");
   function mouseHover(event) {
     if (selected === "") {
@@ -46,6 +53,7 @@ function Square({ value, updateSquare, selected, currentPlayer, isMobile }) {
         updateSquare(value.x, value.y);
         console.log(selected);
         console.log(`is this mobile ${isMobile}`);
+        cpuPlay();
       }}
       // onMouseOver={mouseHover}
       onPointerEnter={mouseEnter}
