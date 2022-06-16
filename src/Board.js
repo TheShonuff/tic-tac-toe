@@ -34,6 +34,7 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
   const [p2Wins, setP2Wins] = useState(0);
   const [winner, setWinner] = useState(null);
   const [draws, setDraws] = useState(0);
+  const [rowWon, setRowWon] = useState(null);
   const [currentPlayer, setCurrentPlayer] = useState(
     playerOne.symbol === "X" ? playerOne : playerTwo
   );
@@ -68,6 +69,7 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
       // console.log(`row in gamewon looks like ${row}`);
       if (row.every((cell) => cell === playerOne.symbol)) {
         setWinner(playerOne);
+        setRowWon(true);
         return;
       } else if (row.every((cell) => cell === playerTwo.symbol)) {
         setWinner(playerTwo);
@@ -110,7 +112,6 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
       return;
     }
   }
-
   //modal button should quit to main menu
   function quit() {
     setWinner(null);
@@ -157,6 +158,7 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
     }
 
     setWinner(null);
+    setRowWon(null);
     setBoard([
       ["", "", ""],
       ["", "", ""],
@@ -204,6 +206,8 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
                 currentPlayer={currentPlayer}
                 board={{ board }}
                 isMobile={isMobile}
+                rowwon={rowWon}
+                winner={{ winner }}
               />
             ))
           )}

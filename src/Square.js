@@ -16,6 +16,8 @@ function Square({
   currentPlayer,
   isMobile,
   cpuPlay,
+  rowwon,
+  winner,
 }) {
   const [icon, setIcon] = useState("");
   function mouseHover(event) {
@@ -44,10 +46,15 @@ function Square({
       }
     }
   }
+  function winnerClass() {
+    if (selected === "X" && rowwon === true) return "Xwon";
+    if (winner.symbol === "O") return "Owon";
+    return "Square";
+  }
   return (
     // Add logic here for each square. Selected is the what to compare against to render a X or O
     <div
-      className="Square"
+      className={winnerClass()}
       onClick={() => {
         console.log(value.x, value.y);
         updateSquare(value.x, value.y);
