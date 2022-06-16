@@ -82,6 +82,8 @@ function Square({
           <img src={Xicon}></img>
         ) : !isMobile && selected === "O" ? (
           <img src={Oicon}></img>
+        ) : rowwon.p1 && selected === "X" ? (
+          <img src={XiconOutline}></img>
         ) : null}
       </div>
     </div>

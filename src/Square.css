@@ -20,6 +20,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: -100;
+}
+
+.Xwon img {
+  filter: brightness(0) contrast(100);
 }
 
 .Owon {
@@ -32,6 +37,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: -100;
+}
+
+.Owon img {
+  filter: brightness(0) contrast(100);
 }
 
 .Square:hover {
