@@ -70,22 +70,22 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
       const row = board[index];
       // console.log(`row in gamewon looks like ${row}`);
       if (row.every((cell) => cell === playerOne.symbol)) {
-        console.log(`winning row was ${row} ${index}`);
         setWinner(playerOne);
         setRowWon({ p1: true, index: index });
         return;
       } else if (row.every((cell) => cell === playerTwo.symbol)) {
         setWinner(playerTwo);
-        setRowWon({ p2: true });
+        setRowWon({ p2: true, index: index });
         return;
       }
     }
     //check column
     for (let i = 0; i < 3; i++) {
+      const col = i;
       const column = board.map((row) => row[i]);
       if (column.every((cell) => cell === playerOne.symbol)) {
         setWinner(playerOne);
-        setColWon({ p1: true });
+        setColWon({ p1: true, col: col });
         return;
       } else if (column.every((cell) => cell === playerTwo.symbol)) {
         setWinner(playerTwo);

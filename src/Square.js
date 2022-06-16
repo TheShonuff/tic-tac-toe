@@ -23,15 +23,15 @@ function Square({
   board,
 }) {
   const [icon, setIcon] = useState("");
-  function mouseHover(event) {
-    if (selected === "") {
-      event.target.src = XiconOutline;
-      console.log(value.x, value.y);
-      return <img src={XiconOutline}></img>;
-    }
-  }
+  // function mouseHover(event) {
+  //   if (selected === "") {
+  //     event.target.src = XiconOutline;
+  //     console.log(value.x, value.y);
+  //     return <img src={XiconOutline}></img>;
+  //   }
+  // }
   function mouseEnter() {
-    console.log("entered");
+    console.log(`value x: ${value.x} value y: ${value.y}`);
     if (currentPlayer.symbol === "X") {
       setIcon(XiconOutline);
     } else {
@@ -57,9 +57,22 @@ function Square({
         return "Xwon";
       }
     }
-
+    // board is board[row][col]
     if (diagwon.p1 === true && selected === "X") return "Xwon";
-    if (colwon.p1 === true && colwon.index === value.y) return "Xwon";
+    // if (colwon.p1 === true && colwon.index === value.y) return "Xwon";
+    if (colwon.p1) {
+      console.log(`column is holding ${colwon.col}`);
+
+      for (let i = 0; i < 3; i++) {
+        if (board[i][colwon.col] === "X" && value.y === colwon.col) {
+          console.log(board[2][0]);
+          console.log(`the record value is ${board[colwon.col][i]} @ ${i}`);
+          return "Xwon";
+        } else {
+          return "Square";
+        }
+      }
+    }
     if (rowwon.p2 === true && rowwon.index === value.x) return "Owon";
     if (diagwon.p2 === true && selected === "O") return "Owon";
     if (colwon.p2 === true && colwon.index === value.y) return "Owon";
@@ -70,9 +83,7 @@ function Square({
     <div
       className={winnerClass()}
       onClick={() => {
-        console.log(value.x, value.y);
         updateSquare(value.x, value.y);
-        console.log(`is this mobile ${isMobile}`);
       }}
       // onMouseOver={mouseHover}
       onPointerEnter={mouseEnter}
