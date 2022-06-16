@@ -37,7 +37,6 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
   const [currentPlayer, setCurrentPlayer] = useState(
     playerOne.symbol === "X" ? playerOne : playerTwo
   );
-  const [squareHover, setSquareHover] = useState(false);
 
   function updateSquare(y, x) {
     const boardCopy = [...board];
