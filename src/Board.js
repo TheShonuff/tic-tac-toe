@@ -34,7 +34,7 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
   const [p2Wins, setP2Wins] = useState(0);
   const [winner, setWinner] = useState(null);
   const [draws, setDraws] = useState(0);
-  const [rowWon, setRowWon] = useState({ p1: false, p2: false });
+  const [rowWon, setRowWon] = useState({ p1: false, p2: false, index: null });
   const [colWon, setColWon] = useState({ p1: false, p2: false });
   const [diagWon, setDiagWon] = useState({ p1: false, p2: false });
   const [currentPlayer, setCurrentPlayer] = useState(
@@ -70,8 +70,9 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
       const row = board[index];
       // console.log(`row in gamewon looks like ${row}`);
       if (row.every((cell) => cell === playerOne.symbol)) {
+        console.log(`winning row was ${row} ${index}`);
         setWinner(playerOne);
-        setRowWon({ p1: true });
+        setRowWon({ p1: true, index: index });
         return;
       } else if (row.every((cell) => cell === playerTwo.symbol)) {
         setWinner(playerTwo);
@@ -82,7 +83,6 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
     //check column
     for (let i = 0; i < 3; i++) {
       const column = board.map((row) => row[i]);
-      // console.log(`column in gamewon looks like ${column}`);
       if (column.every((cell) => cell === playerOne.symbol)) {
         setWinner(playerOne);
         setColWon({ p1: true });
@@ -218,7 +218,7 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
                 selected={board[x][y]}
                 updateSquare={updateSquare}
                 currentPlayer={currentPlayer}
-                board={{ board }}
+                board={board}
                 isMobile={isMobile}
                 rowwon={rowWon}
                 colwon={colWon}

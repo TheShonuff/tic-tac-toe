@@ -20,6 +20,7 @@ function Square({
   winner,
   colwon,
   diagwon,
+  board,
 }) {
   const [icon, setIcon] = useState("");
   function mouseHover(event) {
@@ -49,12 +50,19 @@ function Square({
     }
   }
   function winnerClass() {
-    if (rowwon.p1 === true && selected === "X") return "Xwon";
+    console.log(`the row won index is ${board[rowwon.index]}`);
+
+    if (rowwon.p1) {
+      if (rowwon.index === value.x) {
+        return "Xwon";
+      }
+    }
+
     if (diagwon.p1 === true && selected === "X") return "Xwon";
-    if (colwon.p1 === true && selected === "X") return "Xwon";
-    if (rowwon.p2 === true && selected === "O") return "Owon";
+    if (colwon.p1 === true && colwon.index === value.y) return "Xwon";
+    if (rowwon.p2 === true && rowwon.index === value.x) return "Owon";
     if (diagwon.p2 === true && selected === "O") return "Owon";
-    if (colwon.p2 === true && selected === "O") return "Owon";
+    if (colwon.p2 === true && colwon.index === value.y) return "Owon";
     return "Square";
   }
   return (
@@ -64,7 +72,6 @@ function Square({
       onClick={() => {
         console.log(value.x, value.y);
         updateSquare(value.x, value.y);
-        console.log(selected);
         console.log(`is this mobile ${isMobile}`);
       }}
       // onMouseOver={mouseHover}
