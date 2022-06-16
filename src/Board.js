@@ -134,13 +134,17 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
     return emptyIndexs[randomIndex];
   }
 
-  function cpuPlay(x, y) {
+  function cpuPlay() {
     if (winner) return;
-
-    const CPUMove = getCPUTurn();
-    const boardCopy = [...board];
-    boardCopy[y][x] = currentPlayer.symbol;
-    gameWon();
+    if (currentPlayer.name === "CPU") {
+      const CPUMove = getCPUTurn();
+      const boardCopy = [...board];
+      boardCopy[CPUMove.arrayIndex][CPUMove.index] = currentPlayer.symbol;
+      console.log(CPUMove);
+      setBoard(boardCopy);
+      setCurrentPlayer(playerOne);
+      gameWon();
+    }
   }
 
   //modal button to start next round
@@ -189,6 +193,7 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
           </button>
         </div>
         <div className="Squares">
+          {cpuPlay()}
           {/* map over the array and create squares */}
           {board.map((row, x) =>
             row.map((col, y) => (

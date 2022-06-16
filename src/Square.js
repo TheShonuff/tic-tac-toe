@@ -53,7 +53,6 @@ function Square({
         updateSquare(value.x, value.y);
         console.log(selected);
         console.log(`is this mobile ${isMobile}`);
-        cpuPlay();
       }}
       // onMouseOver={mouseHover}
       onPointerEnter={mouseEnter}

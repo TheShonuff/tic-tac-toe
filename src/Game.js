@@ -5,7 +5,7 @@ import Board from "./Board";
 function Game() {
   const [newGame, setNewGame] = useState(false);
   const [newCPUgame, setnewCPUgame] = useState(false);
-  const [playerOneSymbol, setPlayerOneSymbol] = useState(null);
+  const [playerOneSymbol, setPlayerOneSymbol] = useState("X");
   function startGame() {
     setNewGame(true);
   }
