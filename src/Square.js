@@ -18,6 +18,8 @@ function Square({
   cpuPlay,
   rowwon,
   winner,
+  colwon,
+  diagwon,
 }) {
   const [icon, setIcon] = useState("");
   function mouseHover(event) {
@@ -47,8 +49,12 @@ function Square({
     }
   }
   function winnerClass() {
-    if (selected === "X" && rowwon === true) return "Xwon";
-    if (winner.symbol === "O") return "Owon";
+    if (rowwon.p1 === true && selected === "X") return "Xwon";
+    if (diagwon.p1 === true && selected === "X") return "Xwon";
+    if (colwon.p1 === true && selected === "X") return "Xwon";
+    if (rowwon.p2 === true && selected === "O") return "Owon";
+    if (diagwon.p2 === true && selected === "O") return "Owon";
+    if (colwon.p2 === true && selected === "O") return "Owon";
     return "Square";
   }
   return (

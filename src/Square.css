@@ -13,7 +13,7 @@
 .Xwon {
   height: 140px;
   width: 140px;
-  background-color: pink;
+  background-color: #31c3bd;
   margin: 0.5em 0.5rem 0.5rem 0.5rem;
   border-radius: 15px;
   box-shadow: inset 0px -8px 0px #10212a;
@@ -22,10 +22,10 @@
   align-items: center;
 }
 
-.Ywon {
+.Owon {
   height: 140px;
   width: 140px;
-  background-color: orange;
+  background-color: #f2b137;
   margin: 0.5em 0.5rem 0.5rem 0.5rem;
   border-radius: 15px;
   box-shadow: inset 0px -8px 0px #10212a;

@@ -34,7 +34,9 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
   const [p2Wins, setP2Wins] = useState(0);
   const [winner, setWinner] = useState(null);
   const [draws, setDraws] = useState(0);
-  const [rowWon, setRowWon] = useState(null);
+  const [rowWon, setRowWon] = useState({ p1: false, p2: false });
+  const [colWon, setColWon] = useState({ p1: false, p2: false });
+  const [diagWon, setDiagWon] = useState({ p1: false, p2: false });
   const [currentPlayer, setCurrentPlayer] = useState(
     playerOne.symbol === "X" ? playerOne : playerTwo
   );
@@ -69,10 +71,11 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
       // console.log(`row in gamewon looks like ${row}`);
       if (row.every((cell) => cell === playerOne.symbol)) {
         setWinner(playerOne);
-        setRowWon(true);
+        setRowWon({ p1: true });
         return;
       } else if (row.every((cell) => cell === playerTwo.symbol)) {
         setWinner(playerTwo);
+        setRowWon({ p2: true });
         return;
       }
     }
@@ -82,9 +85,11 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
       // console.log(`column in gamewon looks like ${column}`);
       if (column.every((cell) => cell === playerOne.symbol)) {
         setWinner(playerOne);
+        setColWon({ p1: true });
         return;
       } else if (column.every((cell) => cell === playerTwo.symbol)) {
         setWinner(playerTwo);
+        setColWon({ p2: true });
         return;
       }
     }
@@ -95,15 +100,19 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
     // console.log(`Diagonal two is ${diagonalTwo}`);
     if (diagonalOne.every((cell) => cell === playerOne.symbol)) {
       setWinner(playerOne);
+      setDiagWon({ p1: true });
       return;
     } else if (diagonalOne.every((cell) => cell === playerTwo.symbol)) {
       setWinner(playerTwo);
+      setDiagWon({ p2: true });
       return;
     }
     if (diagonalTwo.every((cell) => cell === playerOne.symbol)) {
       setWinner(playerOne);
+      setDiagWon({ p1: true });
     } else if (diagonalTwo.every((cell) => cell === playerTwo.symbol)) {
       setWinner(playerTwo);
+      setDiagWon({ p2: true });
       return;
     }
     //check no winner Produce Draw
@@ -114,6 +123,9 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
   }
   //modal button should quit to main menu
   function quit() {
+    rowWon({ p1: false, p2: false });
+    setColWon({ p1: false, p2: false });
+    setDiagWon({ p1: false, p2: false });
     setWinner(null);
     // console.log("Clicked");
     quitGame();
@@ -158,7 +170,9 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
     }
 
     setWinner(null);
-    setRowWon(null);
+    setRowWon({ p1: false, p2: false });
+    setColWon({ p1: false, p2: false });
+    setDiagWon({ p1: false, p2: false });
     setBoard([
       ["", "", ""],
       ["", "", ""],
@@ -207,6 +221,8 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
                 board={{ board }}
                 isMobile={isMobile}
                 rowwon={rowWon}
+                colwon={colWon}
+                diagwon={diagWon}
                 winner={{ winner }}
               />
             ))
