@@ -124,17 +124,17 @@ function Square({
     >
       <div className="icon">
         {isMobile && selected === "X" ? (
-          <img src={Xicon}></img>
+          <img src={Xicon} alt="X icon"></img>
         ) : isMobile && selected === "O" ? (
-          <img src={Oicon}></img>
+          <img src={Oicon} alt="O icon"></img>
         ) : !isMobile && icon !== "" && selected === "" ? (
-          <img src={icon}></img>
+          <img src={icon} alt="outline selection icon"></img>
         ) : !isMobile && selected === "X" ? (
-          <img src={Xicon}></img>
+          <img src={Xicon} alt="X icon"></img>
         ) : !isMobile && selected === "O" ? (
-          <img src={Oicon}></img>
+          <img src={Oicon} alt="O icon"></img>
         ) : rowwon.p1 && selected === "X" ? (
-          <img src={XiconOutline}></img>
+          <img src={XiconOutline} alt="X outline selection icon"></img>
         ) : null}
       </div>
     </div>

@@ -29,7 +29,8 @@ function Game() {
         <GameSelect
           newGame={startGame}
           newCPUGame={newCPUGame}
-          playerOneSymbol={setPlayerOne}
+          setPlayerOneSymbol={setPlayerOne}
+          p1Symbol={playerOneSymbol}
         />
       ) : (
         <Board

@@ -68,6 +68,10 @@
   border: 0;
 }
 
+.Reset:hover {
+  cursor: pointer;
+}
+
 .Scores {
   display: flex;
   width: 460px;

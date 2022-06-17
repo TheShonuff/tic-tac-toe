@@ -25,9 +25,9 @@ function Modal({ winner, quit, nextRound, cpuGame }) {
         </h1>
         <div className="WinnerTitle">
           {winner.symbol === "X" ? (
-            <img src={Xicon}></img>
+            <img src={Xicon} alt="X icon"></img>
           ) : winner.symbol === "O" ? (
-            <img src={Oicon}></img>
+            <img src={Oicon} alt="O icon"></img>
           ) : winner === "Draw" ? null : null}
           <h1 className={winner.symbol === "X" ? "p1Win" : "p2Win"}>
             {winner.symbol !== undefined ? "TAKES THE ROUND" : "ROUND TIED"}
