@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import "./Square.css";
-import Xicon from "./assets/icon-x.svg";
-import XiconOutline from "./assets/icon-x-outline.svg";
-import Oicon from "./assets/icon-o.svg";
-import OiconOutline from "./assets/icon-o-outline.svg";
+import Xicon from "../../assets/icon-x.svg";
+import XiconOutline from "../../assets/icon-x-outline.svg";
+import Oicon from "../../assets/icon-o.svg";
+import OiconOutline from "../../assets/icon-o-outline.svg";
 
-function Square({
+export function Square({
   value,
   updateSquare,
   selected,
   currentPlayer,
   isMobile,
-  cpuPlay,
   rowwon,
   winner,
   colwon,
@@ -140,5 +139,3 @@ function Square({
     </div>
   );
 }
-
-export default Square;

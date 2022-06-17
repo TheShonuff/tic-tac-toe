@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import "./GameSelect.css";
-import Xicon from "./assets/icon-x.svg";
-import Oicon from "./assets/icon-o.svg";
-import logo from "./assets/logo.svg";
+import Xicon from "../../assets/icon-x.svg";
+import Oicon from "../../assets/icon-o.svg";
+import logo from "../../assets/logo.svg";
 
-function GameSelect({ newGame, setPlayerOneSymbol, newCPUGame, p1Symbol }) {
+export function GameSelect({
+  newGame,
+  setPlayerOneSymbol,
+  newCPUGame,
+  p1Symbol,
+}) {
   return (
     <div className="GameSelect-Wrapper">
       <div className="GameSelection">
@@ -43,5 +48,3 @@ function GameSelect({ newGame, setPlayerOneSymbol, newCPUGame, p1Symbol }) {
     </div>
   );
 }
-
-export default GameSelect;
