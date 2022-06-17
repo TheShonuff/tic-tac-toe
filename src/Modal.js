@@ -4,7 +4,7 @@ import Xicon from "./assets/icon-x.svg";
 
 import Oicon from "./assets/icon-o.svg";
 
-function Modal({ winner, quit, nextRound }) {
+function Modal({ winner, quit, nextRound, cpuGame }) {
   return (
     <div className="ModalContainer">
       <div className="Modal">

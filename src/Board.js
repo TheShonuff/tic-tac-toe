@@ -117,7 +117,7 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
   }
   //modal button should quit to main menu
   function quit() {
-    rowWon({ p1: false, p2: false });
+    setRowWon({ p1: false, p2: false });
     setColWon({ p1: false, p2: false });
     setDiagWon({ p1: false, p2: false });
     setWinner(null);
@@ -181,6 +181,7 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
           nextRound={nextRound}
           quit={quit}
           playerOneSymbol={playerOneSymbol}
+          cpuGame={newCPUgame}
         />
       ) : null}
 
