@@ -112,7 +112,7 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
       setDiagWon({ p1: true, type: 2 });
     } else if (diagonalTwo.every((cell) => cell === playerTwo.symbol)) {
       setWinner(playerTwo);
-      setDiagWon({ p2: true });
+      setDiagWon({ p2: true, type: 2 });
       return;
     }
     //check no winner Produce Draw
