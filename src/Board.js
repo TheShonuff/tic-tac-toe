@@ -17,13 +17,13 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
   ]);
   // When the game loads your asked to chose X or O. X alawys goes first therefore X should be P1 and O be P2
   const [playerOne, setPlayerOne] = useState({
-    name: "Player One",
+    name: "PLAYER ONE",
     symbol: playerOneSymbol,
     icon: Xicon,
     wins: 0,
   });
   const [playerTwo, setPlayerTwo] = useState({
-    name: newCPUgame === true ? "CPU" : "Player Two",
+    name: newCPUgame === true ? "CPU" : "PLAYER TWO",
     symbol: playerOneSymbol === "X" ? "O" : "X",
     icon: Oicon,
     wins: 0,

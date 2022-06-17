@@ -9,10 +9,16 @@ function Modal({ winner, quit, nextRound, cpuGame }) {
     <div className="ModalContainer">
       <div className="Modal">
         <h1 className="Announce">
-          {winner.symbol === "X"
-            ? `${winner.name}`
+          {cpuGame && winner.name === "PLAYER ONE"
+            ? "You Won!"
+            : cpuGame && winner.name === "CPU"
+            ? "OH NO, YOU LOST..."
+            : cpuGame && winner === "Draw"
+            ? ""
+            : winner.symbol === "X"
+            ? `${winner.name} WINS!`
             : winner.symbol === "O"
-            ? `${winner.name}`
+            ? `${winner.name} WINS!`
             : winner === "Draw"
             ? ""
             : null}
