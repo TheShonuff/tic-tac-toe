@@ -44,7 +44,6 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
   function updateSquare(y, x) {
     const boardCopy = [...board];
     if (boardCopy[y][x] === "") {
-      // toggle player state on every click
       currentPlayer === playerOne
         ? setCurrentPlayer(playerTwo)
         : setCurrentPlayer(playerOne);
@@ -68,7 +67,6 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
     //check row
     for (let index = 0; index < board.length; index++) {
       const row = board[index];
-      // console.log(`row in gamewon looks like ${row}`);
       if (row.every((cell) => cell === playerOne.symbol)) {
         setWinner(playerOne);
         setRowWon({ p1: true, index: index });
@@ -96,8 +94,6 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
     //check diagonal
     const diagonalOne = [board[0][0], board[1][1], board[2][2]];
     const diagonalTwo = [board[2][0], board[1][1], board[0][2]];
-    // console.log(`Diagonal One is ${diagonalOne}`);
-    // console.log(`Diagonal two is ${diagonalTwo}`);
     if (diagonalOne.every((cell) => cell === playerOne.symbol)) {
       setWinner(playerOne);
       setDiagWon({ p1: true, type: 1 });
@@ -127,7 +123,6 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
     setColWon({ p1: false, p2: false });
     setDiagWon({ p1: false, p2: false });
     setWinner(null);
-    // console.log("Clicked");
     quitGame();
   }
 
@@ -180,7 +175,6 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
     ]);
     setCurrentPlayer(playerOne.symbol === "X" ? playerOne : playerTwo);
   }
-  //add outline in square of current player if square is empty
 
   return (
     <div>
@@ -209,7 +203,6 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
         </div>
         <div className="Squares">
           {cpuPlay()}
-          {/* map over the array and create squares */}
           {board.map((row, x) =>
             row.map((col, y) => (
               <Square
@@ -231,7 +224,6 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
         <div className="Scores">
           <div className="Player-One-Score">
             <p>
-              {/* {playerOne.symbol} ({playerOne.name.toUpperCase()}) */}
               {isMobile
                 ? `X ${playerOne.symbol === "X" ? "P1" : "P2"}`
                 : `X ${
@@ -246,7 +238,6 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
           </div>
           <div className="Player-Two-Score">
             <p>
-              {/* {playerTwo.symbol} ({playerTwo.name.toUpperCase()}) */}
               {isMobile
                 ? `O ${playerTwo.symbol === "O" ? "P2" : "P1"}`
                 : ` O ${

@@ -23,13 +23,7 @@ function Square({
   board,
 }) {
   const [icon, setIcon] = useState("");
-  // function mouseHover(event) {
-  //   if (selected === "") {
-  //     event.target.src = XiconOutline;
-  //     console.log(value.x, value.y);
-  //     return <img src={XiconOutline}></img>;
-  //   }
-  // }
+
   function mouseEnter() {
     console.log(`value x: ${value.x} value y: ${value.y}`);
     if (currentPlayer.symbol === "X") {
@@ -42,13 +36,6 @@ function Square({
     setIcon("");
   }
 
-  function mobileUser() {
-    if (isMobile) {
-      if (selected === "X") {
-        return <img src={Xicon}></img>;
-      }
-    }
-  }
   function winnerClass() {
     if (rowwon.p1) {
       if (rowwon.index === value.x) {
@@ -132,13 +119,11 @@ function Square({
     return "Square";
   }
   return (
-    // Add logic here for each square. Selected is the what to compare against to render a X or O
     <div
       className={winnerClass()}
       onClick={() => {
         updateSquare(value.x, value.y);
       }}
-      // onMouseOver={mouseHover}
       onPointerEnter={mouseEnter}
       onPointerLeave={mouseLeave}
     >
