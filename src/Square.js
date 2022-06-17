@@ -55,9 +55,6 @@ function Square({
         return winner.symbol === "X" ? "Xwon" : "Owon";
       }
     }
-    // board is board[row][col]
-    // if (diagwon.p1 === true && selected === "X")
-    //   return winner.symbol === "X" ? "Xwon" : "Owon";
     if (diagwon.p1) {
       if (diagwon.type === 1) {
         if (board[0][0] !== "" && board[1][1] !== "" && board[2][2] !== "") {
@@ -75,7 +72,31 @@ function Square({
           let y = 0;
           for (let x = 2; x >= 0; x--) {
             if (value.x === x && value.y === y) {
-              return "Xwon";
+              return winner.symbol === "X" ? "Xwon" : "Owon";
+            }
+            y++;
+          }
+        }
+      }
+    }
+    if (diagwon.p2) {
+      if (diagwon.type === 1) {
+        if (board[0][0] !== "" && board[1][1] !== "" && board[2][2] !== "") {
+          for (let i = 0; i < 3; i++) {
+            if (value.x === i && value.y === i) {
+              return winner.symbol === "X" ? "Xwon" : "Owon";
+            }
+          }
+        } else {
+          return "Square";
+        }
+      }
+      if (diagwon.type === 2) {
+        if (board[2][0] !== "" && board[1][1] !== "" && board[0][2] !== "") {
+          let y = 0;
+          for (let x = 2; x >= 0; x--) {
+            if (value.x === x && value.y === y) {
+              return winner.symbol === "X" ? "Xwon" : "Owon";
             }
             y++;
           }
