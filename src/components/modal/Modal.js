@@ -1,8 +1,6 @@
 import React from "react";
 import "./Modal.css";
-import Xicon from "../../assets/icon-x.svg";
-
-import Oicon from "../../assets/icon-o.svg";
+import { Xicon, Oicon } from "../../assets";
 
 export function Modal({ winner, quit, nextRound, cpuGame }) {
   return (

@@ -1,8 +1,6 @@
 import React from "react";
 import "./GameSelect.css";
-import Xicon from "../../assets/icon-x.svg";
-import Oicon from "../../assets/icon-o.svg";
-import logo from "../../assets/logo.svg";
+import { Xicon, Oicon, logo } from "../../assets";
 
 export function GameSelect({
   newGame,

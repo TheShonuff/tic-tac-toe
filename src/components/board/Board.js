@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Xicon from "../../assets/icon-x.svg";
 import Oicon from "../../assets/icon-o.svg";
-import IconRestart from "../../assets/icon-restart.svg";
+import { IconRestart } from "../../assets";
 import { Modal, Square } from "../";
 
 import { isMobile } from "react-device-detect";
