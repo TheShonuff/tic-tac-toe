@@ -22,7 +22,7 @@ function Game() {
   function setPlayerOne(symbol) {
     setPlayerOneSymbol(symbol);
   }
-  const [winner, isWinnner] = useState(null);
+
   return (
     <div>
       {newGame === false ? (

@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import "./Square.css";
-import Board from "./Board";
 import Xicon from "./assets/icon-x.svg";
 import XiconOutline from "./assets/icon-x-outline.svg";
 import Oicon from "./assets/icon-o.svg";
 import OiconOutline from "./assets/icon-o-outline.svg";
-// function handleClick(key, position) {
-//   console.log(`Clicked ${key}`);
-// }
 
 function Square({
   value,
@@ -25,7 +21,6 @@ function Square({
   const [icon, setIcon] = useState("");
 
   function mouseEnter() {
-    console.log(`value x: ${value.x} value y: ${value.y}`);
     if (currentPlayer.symbol === "X") {
       setIcon(XiconOutline);
     } else {

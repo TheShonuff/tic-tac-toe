@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import Square from "./Square";
 import Xicon from "./assets/icon-x.svg";
-import XiconOutline from "./assets/icon-o-outline.svg";
 import Oicon from "./assets/icon-o.svg";
-import OiconOutline from "./assets/icon-o-outline.svg";
 import IconRestart from "./assets/icon-restart.svg";
 import Modal from "./Modal";
 
@@ -147,7 +145,6 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
       const CPUMove = getCPUTurn();
       const boardCopy = [...board];
       boardCopy[CPUMove.arrayIndex][CPUMove.index] = currentPlayer.symbol;
-      console.log(CPUMove);
       setBoard(boardCopy);
       setCurrentPlayer(playerOne);
       gameWon();
