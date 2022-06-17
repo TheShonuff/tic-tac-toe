@@ -50,32 +50,64 @@ function Square({
     }
   }
   function winnerClass() {
-    console.log(`the row won index is ${board[rowwon.index]}`);
-
     if (rowwon.p1) {
       if (rowwon.index === value.x) {
-        return "Xwon";
+        return winner.symbol === "X" ? "Xwon" : "Owon";
       }
     }
     // board is board[row][col]
-    if (diagwon.p1 === true && selected === "X") return "Xwon";
-    // if (colwon.p1 === true && colwon.index === value.y) return "Xwon";
-    if (colwon.p1) {
-      console.log(`column is holding ${colwon.col}`);
+    // if (diagwon.p1 === true && selected === "X")
+    //   return winner.symbol === "X" ? "Xwon" : "Owon";
+    if (diagwon.p1) {
+      if (diagwon.type === 1) {
+        if (board[0][0] !== "" && board[1][1] !== "" && board[2][2] !== "") {
+          for (let i = 0; i < 3; i++) {
+            if (value.x === i && value.y === i) {
+              return winner.symbol === "X" ? "Xwon" : "Owon";
+            }
+          }
+        } else {
+          return "Square";
+        }
+      }
+      if (diagwon.type === 2) {
+        if (board[2][0] !== "" && board[1][1] !== "" && board[0][2] !== "") {
+          let y = 0;
+          for (let x = 2; x >= 0; x--) {
+            if (value.x === x && value.y === y) {
+              return "Xwon";
+            }
+            y++;
+          }
+        }
+      }
+    }
 
+    if (colwon.p1) {
+      console.log(`The winner symbol is ${winner.symbol}`);
       for (let i = 0; i < 3; i++) {
-        if (board[i][colwon.col] === "X" && value.y === colwon.col) {
-          console.log(board[2][0]);
-          console.log(`the record value is ${board[colwon.col][i]} @ ${i}`);
-          return "Xwon";
+        if (board[i][colwon.col] !== "" && value.y === colwon.col) {
+          return winner.symbol === "X" ? "Xwon" : "Owon";
         } else {
           return "Square";
         }
       }
     }
-    if (rowwon.p2 === true && rowwon.index === value.x) return "Owon";
-    if (diagwon.p2 === true && selected === "O") return "Owon";
-    if (colwon.p2 === true && colwon.index === value.y) return "Owon";
+    if (rowwon.p2) {
+      if (rowwon.index === value.x) {
+        return winner.symbol === "X" ? "Xwon" : "Owon";
+      }
+    }
+    if (colwon.p2) {
+      for (let i = 0; i < 3; i++) {
+        if (board[i][colwon.col] !== "" && value.y === colwon.col) {
+          return winner.symbol === "O" ? "Owon" : "Xwon";
+        } else {
+          return "Square";
+        }
+      }
+    }
+
     return "Square";
   }
   return (

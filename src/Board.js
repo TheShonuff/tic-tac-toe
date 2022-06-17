@@ -89,7 +89,7 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
         return;
       } else if (column.every((cell) => cell === playerTwo.symbol)) {
         setWinner(playerTwo);
-        setColWon({ p2: true });
+        setColWon({ p2: true, col: col });
         return;
       }
     }
@@ -100,16 +100,16 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
     // console.log(`Diagonal two is ${diagonalTwo}`);
     if (diagonalOne.every((cell) => cell === playerOne.symbol)) {
       setWinner(playerOne);
-      setDiagWon({ p1: true });
+      setDiagWon({ p1: true, type: 1 });
       return;
     } else if (diagonalOne.every((cell) => cell === playerTwo.symbol)) {
       setWinner(playerTwo);
-      setDiagWon({ p2: true });
+      setDiagWon({ p2: true, type: 1 });
       return;
     }
     if (diagonalTwo.every((cell) => cell === playerOne.symbol)) {
       setWinner(playerOne);
-      setDiagWon({ p1: true });
+      setDiagWon({ p1: true, type: 2 });
     } else if (diagonalTwo.every((cell) => cell === playerTwo.symbol)) {
       setWinner(playerTwo);
       setDiagWon({ p2: true });
@@ -223,7 +223,7 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
                 rowwon={rowWon}
                 colwon={colWon}
                 diagwon={diagWon}
-                winner={{ winner }}
+                winner={winner}
               />
             ))
           )}
