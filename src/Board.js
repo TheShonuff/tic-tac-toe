@@ -192,7 +192,10 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
             <img src={Oicon} alt="O-icon"></img>
           </div>
           <div className="Current-Player">
-            <img src={currentPlayer.symbol === "X" ? Xicon : Oicon}></img>
+            <img
+              src={currentPlayer.symbol === "X" ? Xicon : Oicon}
+              alt="current plater icon"
+            ></img>
             <p>TURN</p>
           </div>
           <button className="Reset" onClick={resetGame}>
