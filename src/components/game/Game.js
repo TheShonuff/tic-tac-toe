@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import GameSelect from "./GameSelect";
-import Board from "./Board";
+import { Board, GameSelect } from "../";
 
-function Game() {
+export function Game() {
   const [newGame, setNewGame] = useState(false);
   const [newCPUgame, setnewCPUgame] = useState(false);
   const [playerOneSymbol, setPlayerOneSymbol] = useState("X");
@@ -42,5 +41,3 @@ function Game() {
     </div>
   );
 }
-
-export default Game;

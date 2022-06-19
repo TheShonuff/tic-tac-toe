@@ -1,10 +1,8 @@
 import React from "react";
 import "./Modal.css";
-import Xicon from "./assets/icon-x.svg";
+import { Xicon, Oicon } from "../../assets";
 
-import Oicon from "./assets/icon-o.svg";
-
-function Modal({ winner, quit, nextRound, cpuGame }) {
+export function Modal({ winner, quit, nextRound, cpuGame }) {
   return (
     <div className="ModalContainer">
       <div className="Modal">
@@ -48,5 +46,3 @@ function Modal({ winner, quit, nextRound, cpuGame }) {
     </div>
   );
 }
-
-export default Modal;

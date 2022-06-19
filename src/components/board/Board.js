@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import Square from "./Square";
-import Xicon from "./assets/icon-x.svg";
-import Oicon from "./assets/icon-o.svg";
-import IconRestart from "./assets/icon-restart.svg";
-import Modal from "./Modal";
+import Xicon from "../../assets/icon-x.svg";
+import Oicon from "../../assets/icon-o.svg";
+import { IconRestart } from "../../assets";
+import { Modal, Square } from "../";
 
 import { isMobile } from "react-device-detect";
 
 import "./Board.css";
 
-function Board({ quitGame, playerOneSymbol, newCPUgame }) {
+export function Board({ quitGame, playerOneSymbol, newCPUgame }) {
   const [board, setBoard] = useState([
     ["", "", ""],
     ["", "", ""],
@@ -252,5 +251,3 @@ function Board({ quitGame, playerOneSymbol, newCPUgame }) {
     </div>
   );
 }
-
-export default Board;
